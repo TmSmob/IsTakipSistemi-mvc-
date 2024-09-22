@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Ata";
+    Layout = "~/Views/Shared/_LayoutYonetici.cshtml";
+}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            @ViewBag.birimAd Birimi Icin Is Atama Islemi
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Ata", "Yonetici", FormMethod.Post))
+            {
+                <div class="mb-3">
+                    <label for="isBaslik" class="form-label">Is Basligini Giriniz</label>
+                    <input type="text" class="form-control" id="isBaslik" name="isBaslik">
+                </div>
+                <div class="mb-3">
+                    <label for="isAciklama" class="form-label">Is Aciklamasini Giriniz</label>
+                    <input type="text" class="form-control" id="isAciklama" name="isAciklama">
+                </div>
+                <div class="mb-3">
+                    <label for="selectPer" class="form-label">Calisan Seciniz</label>
+                    <select class="form-select" name="selectPer" id="selectPer">
+                        @foreach (var personel in ViewBag.personeller)
+                        {
+                            <option value="@personel.personelId">@personel.personelAdSoyad</option>
+
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-outline-primary"type="submit">Is Ata</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
